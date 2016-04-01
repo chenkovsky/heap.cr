@@ -53,6 +53,17 @@ describe Heap do
   it "nlargest_by" do
     [1, 2, 3, 4].nlargest_by(2) { |x| -x }.sort.should eq([1, 2])
   end
+
+  it "push pop" do
+    a = [1, 2]
+    a.heap_push 3
+    a.heap_pop.should eq(1)
+  end
+
+  it "heapify" do
+    a = [3, 2, 1]
+    a.heapify.should eq([1, 2, 3])
+  end
 end
 ```
 
