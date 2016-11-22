@@ -4,7 +4,7 @@ describe Heap do
   # TODO: Write tests
 
   it "nsmallest" do
-    [1, 2, 3].nsmallest(2).sort.should eq([1, 2])
+    [99, 1, 88, 2, 3, 56].nsmallest(2).sort.should eq([1, 2])
   end
 
   it "nsmallest_by" do
