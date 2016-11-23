@@ -231,8 +231,8 @@ class Array(T)
       heap << self[i]
     end
     heap.heapify_max!
-    top = heap[0]
     (n...size).each do |i|
+      top = heap[0]
       if top > self[i]
         top = self[i]
         heap.heap_replace_max(top)
