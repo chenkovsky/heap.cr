@@ -7,8 +7,16 @@ describe Heap do
     [99, 1, 88, 2, 3, 56].nsmallest(2).sort.should eq([1, 2])
   end
 
+  it "arg_nsmallest" do
+    [99, 1, 88, 2, 3, 56].arg_nsmallest(2).sort.should eq([1, 3])
+  end
+
   it "nsmallest_by" do
     [1, 2, 3].nsmallest_by(2) { |x| -x }.sort.should eq([2, 3])
+  end
+
+  it "arg_nsmallest_by" do
+    [1, 2, 3].arg_nsmallest_by(2) { |x| -x }.sort.should eq([1, 2])
   end
 
   it "merge" do
@@ -31,8 +39,16 @@ describe Heap do
     [1, 2, 3].nlargest(2).sort.should eq([2, 3])
   end
 
+  it "arg_nlargest" do
+    [1, 2, 3].arg_nlargest(2).sort.should eq([1, 2])
+  end
+
   it "nlargest_by" do
     [1, 2, 3, 4].nlargest_by(2) { |x| -x }.sort.should eq([1, 2])
+  end
+
+  it "arg_nlargest_by" do
+    [1, 2, 3, 4].arg_nlargest_by(2) { |x| -x }.sort.should eq([0, 1])
   end
 
   it "push pop" do
