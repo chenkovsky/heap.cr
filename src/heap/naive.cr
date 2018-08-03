@@ -162,6 +162,23 @@ class Array(T)
       end
       return heap.map { |k_v_tuple| k_v_tuple[1] }
     end
+
+    def _arg_n{{(arg == :min ? "largest" : "smallest").id}}_by(n, heap : Array(Tuple(K, Int32))? = nil, &key_func : T -> K) forall K
+      heap = Array(Tuple(K, T)).new n if heap.nil?
+      (0...n).each do |i|
+        heap << ({key_func.call(self[i]), i})
+      end
+      heap.heapify{{(arg == :min ? "" : "_max").id}}!
+      top_key, top_idx = heap[0]
+      (n...size).each do |i|
+        elm_key = key_func.call(self[i])
+        if top_key {{(arg == :min ? "<" : ">").id}} elm_key
+          top_key = elm_key
+          heap.heap_replace{{(arg == :min ? "" : "_max").id}}({elm_key, i})
+        end
+      end
+      return heap.clone
+    end
   {% end %}
 
   def self.merge(*iterables, heap : Array(Tuple(T, Int32, Int32))? = nil, &block : T -> _)
