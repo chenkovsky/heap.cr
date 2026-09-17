@@ -59,7 +59,7 @@ class Array(T)
 
     def heapify{{(arg == :min ? "" : "_max").id}}!
       # Transform list into a heap, in-place, in O(len(x)) time.
-      ((size/2 - 1)..0).each do |i|
+      ((size // 2 - 1)..0).each do |i|
         sift_up{{(arg == :min ? "" : "_max").id}}(i)
       end
       self
